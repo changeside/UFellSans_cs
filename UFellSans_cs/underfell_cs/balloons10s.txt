@@ -1,0 +1,2 @@
+origin.y,40
+validrect.bottom,-30
