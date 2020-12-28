@@ -26,11 +26,11 @@ OnPhone : array
 {
 	"(s_pout)"
 	--
-	OnCalled_Unknown
-	OnCalled_Papyrus
-	OnCalled_Grillby
+	//OnCalled_Unknown
+	//OnCalled_Papyrus
+	//OnCalled_Grillby
 	OnCalled_Alphys
-	OnCalled_Undyne
+	//OnCalled_Undyne
 	--
 	"%(click)"
 }

@@ -128,8 +128,12 @@ OnKeyPress
 {
 	case reference0
 	{
-		when "t"; AiTalk
-		when "r"; lastTalk
+		when "t" {
+			if SHIORI3FW.CanTalk; AiTalk
+		} 
+		when "r" {
+			if SHIORI3FW.CanTalk; OnLastTalk //@uf_menu.dic
+		}
 		when "f1"; "\![open,readme]"
 		//when "u";
 		//{if musicmenumode == 1; "\![raise,OnMoveSong,up]";}

@@ -3,7 +3,7 @@
 //
 //			:Boot and close related.
 //------------------------------------------------------------------------------
-OnVersionSet { TOREAL(2.00) }
+OnVersionSet { TOREAL(2.01) }
 OnUpdateURLSet { //OLD: "http://changeside.usite.pro/ufsans"
 	if _argv[0] == "patreon"; "https://raw.githubusercontent.com/changeside/UFellSans_cs_"+patreonCode+"/main/UFellSans_cs/"
 	else; "https://raw.githubusercontent.com/changeside/UFellSans_cs/main/UFellSans_cs/"
@@ -187,7 +187,7 @@ OnBoot
 			%(m)(You ask him how he feels about dating you.)(s_2)\i[102]/
 			%(m)%(it)sigh%(def)...(s_0)\i[105]\w8\w8(s_0)\i[102]\i[303]/
 			i-\n\n(s_0)\i[102]%(m)yeah sure. if you really wanna so badly...\w8(s_0)\i[302]just. shut up 'bout it./
-			VARC('angry','+5','tired','+3')"
+			%(VARC('angry','+5','tired','+3'))"
 		datetrue = 3
 	}
 	elseif datetrue == 3 {
@@ -224,6 +224,7 @@ OnBoot
 			%(m)(You can change it under Settings later.)"
 		OnBackup_Define("boot") //@uf_log.dic
 	}
+	--
 	_txt
 }
 Boot_Default //specialized checks for normal boots
