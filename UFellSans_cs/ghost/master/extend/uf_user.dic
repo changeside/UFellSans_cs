@@ -323,6 +323,7 @@ OnHabits_Shelf //@uf_aitalk.dic
 		if AFF(50,70); "\0(s_0)%(m)ah\i[102], i know yer pain."
 		if AFF(0,15,30); "\0(s_0)\i[112]\i[203]\i[301]\i[298]%(m)(He's laughing.)"
 	}
+	--
 	ARRADD_0("user",reference0)
 }
 OnHabits_Artist //@uf_aitalk.dic
@@ -342,9 +343,10 @@ OnHabits_Artist //@uf_aitalk.dic
 		if AFF(30); "(s_0)\i[114]\i[301]%(m)'s a joke %(nickname)."
 		if AFF(0); "(s_0)\i[102]\i[203]\i[301]%(m)ya' do know that was more o' a joke than anythin'?"
 	}
-
+	--
 	if reference0 == "nonartist"; ARRADD_0("user","nonartist")
 	else; ARRADD_0("user","artist")
+	--
 	ARRADD_0("alphys","hobby")
 }
 OnHabits_Hemisphere //@uf_aitalk.dic
@@ -364,7 +366,7 @@ OnHabits_Hemisphere //@uf_aitalk.dic
 		--
 		upperworld = 1
 	}
-	
+	--
 	ARRADD_0("user","place")
 }
 OnHabits_Check //@uf_bootend.dic

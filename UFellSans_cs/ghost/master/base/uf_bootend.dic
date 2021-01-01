@@ -3,7 +3,7 @@
 //
 //			:Boot and close related.
 //------------------------------------------------------------------------------
-OnVersionSet { TOREAL(2.01) }
+OnVersionSet { TOREAL(2.02) }
 OnUpdateURLSet { //OLD: "http://changeside.usite.pro/ufsans"
 	if _argv[0] == "patreon"; "https://raw.githubusercontent.com/changeside/UFellSans_cs_"+patreonCode+"/main/UFellSans_cs/"
 	else; "https://raw.githubusercontent.com/changeside/UFellSans_cs/main/UFellSans_cs/"
@@ -152,8 +152,9 @@ OnFirstBoot_Pron
 OnBoot
 {
 	_txt = "\p[999]\s[-1]\p[998]\s[-1]\p[997]\s[-1]\1\s[-1]\w8\w8\w8\0(s_0)"
-	
+	--
 	OnVariablesSet("boot")
+	--
 	//Specific variable changes
 	timeClosed = OffTimeCalc //@uf_func.dic
 	if (timeClosed[3] == 1|| timeoff[2] >= 10); //increase booting streak; 1 day || >= 10 hours
@@ -167,12 +168,13 @@ OnBoot
 	}
 	if (TimeSlot == "evening"||TimeSlot=="latenight"||TimeSlot=="midnight") && (weekday == 0 || weekday > 5);
 		countAr[2]++ //userloner
+	--
 	OnHabits_Check 	//@uf_user.dic
-
+	--
 	OnMood_RND		//@uf_moods.dic
-
+	--
 	OnAlarm_CounterSet //@uf_additional.dic
-
+	--
 	if !INV('kofinote')[0]; //unlock kofi notice
 		_txt += "\p[299]\s[299]\![set,alignmenttodesktop,bottom]\0"
 	if !ARRINFO("user","socks") && totalinfo[0] > 1 && RND(50); //sock event
@@ -184,7 +186,7 @@ OnBoot
 		_txt += "\i[106]\i[206]\i[303]\i[400]\i[401]\i[298]%(m)...\n\n/
 			%(m)(...)\n%(m)(He is still uncomfortable.)%(pause)/
 			(s_0)\i[108]\i[205]\i[303]\i[400]\i[209]/
-			%(m)(You ask him how he feels about dating you.)(s_2)\i[102]/
+			(s_2)\i[102]\i[298]%(m)(You ask him how he feels about dating you.)\n/
 			%(m)%(it)sigh%(def)...(s_0)\i[105]\w8\w8(s_0)\i[102]\i[303]/
 			i-\n\n(s_0)\i[102]%(m)yeah sure. if you really wanna so badly...\w8(s_0)\i[302]just. shut up 'bout it./
 			%(VARC('angry','+5','tired','+3'))"
@@ -214,14 +216,15 @@ OnBoot
 	
 	//User mood check @uf_moods.dic
 	if ( datetrue && !MD("tired") && RND(80) );
-		_txt += "\![raise,OnMood_User]"
+		_txt += "%(pause)\![raise,OnMood_User]"
 	if ( !datetrue && !MD("sad","angry","tired") && AFF(70) && RND(70) );
-		_txt += "\![raise,OnMood_User]"
+		_txt += "%(pause)\![raise,OnMood_User]"
 	
 	//Important notices
 	if backupPath == "" { //making sure a backup path is defined
 		_txt += "%(pause)\i[298]%(m)(Please choose a path to back up your variables in.)\n\n/
 			%(m)(You can change it under Settings later.)"
+		--
 		OnBackup_Define("boot") //@uf_log.dic
 	}
 	--

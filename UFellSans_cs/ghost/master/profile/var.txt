@@ -6,4 +6,4 @@ homeurl,https://raw.githubusercontent.com/changeside/UFellSans_cs/main/UFellSans
 update_result,OK(0)
 firstboot,662079759
 commitmemorysize,2467155
-lastboot,662494434
+lastboot,662850100

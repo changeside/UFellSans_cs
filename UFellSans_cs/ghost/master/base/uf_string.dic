@@ -373,6 +373,7 @@ OnTranslate
     _talk = reference0
 	_talk = EVAL('"' + REPLACE(_talk,'"','" + CHR(0x22) + "') + '"')
 	_talk = TextOnlyTranslator(_talk,'TextOnlyTranslatorFunc')
+	_talk = RE_REPLACEEX(_talk,'\(s_([^\)]*)\)','\\![embed,Ons_$1]')
 	_talk = EVAL('"' + REPLACE(_talk,'"','" + CHR(0x22) + "') + '"')
 	TOSTR(_talk)
 	//_talk = "\_?" + _talk //bugfix
@@ -474,14 +475,13 @@ TextOnlyTranslator
 	}
 		//Replace a talking mouths after \i[298] with non-talking
 	//_tr = RE_REPLACEEX(_tr,'(?<=\\i\[298\])(.*?\i\[2\d\d)\]','$10]')
-	_tr = RE_REPLACEEX(_tr,'\(s_([^\)]*)\)','\![embed,Ons_$1]')
 
 	phonetrue = tempphone //reassign variables from beginning
 	sleeptrue = tempsleep
 	sittrue = tempsit
 	_tr
 }
-TextOnlyTranslatorFunc
+TextOnlyTranslatorFunc //Text only replacements; no regards for tags
 {
 	//_argv[0] = text to parse
 	//_argv[1] = if it's a quicksection

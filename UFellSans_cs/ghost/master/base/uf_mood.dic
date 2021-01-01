@@ -144,7 +144,7 @@ OnMood_User
 		usermood = reference0
 	}
 	elseif AFF(70) {
-		"(s_0)\i[102]/
+		"\![set,choicetimeout,-1](s_0)\i[102]/
 		%(m)anyway, how are ya feelin?\n\n[half]\_q/
 		\![*]\q[terrible,OnMood_User,terrible]\n/
 		\![*]\q[bad,OnMood_User,bad]\n/
