@@ -3,7 +3,7 @@
 //
 //			:Boot and close related.
 //------------------------------------------------------------------------------
-OnVersionSet { TOREAL(2.02) }
+OnVersionSet { TOREAL(2.03) }
 OnUpdateURLSet { //OLD: "http://changeside.usite.pro/ufsans"
 	if _argv[0] == "patreon"; "https://raw.githubusercontent.com/changeside/UFellSans_cs_"+patreonCode+"/main/UFellSans_cs/"
 	else; "https://raw.githubusercontent.com/changeside/UFellSans_cs/main/UFellSans_cs/"
@@ -20,6 +20,7 @@ OnVariablesSet //_argv[0] = first/boot/reset
 	--
 	//Global temp vars
 	if _argv[0] == "first"; togglefirst = 1
+		if _argv[0] == "boot" && ISVAR("togglefirst") == 1; ERASE("togglefirst")
 	if _argv[0] != "boot"; togglerock = 1
 	if _argv[0] != "boot"; togglesock = 1
 	if _argv[0] != "boot"; togglemail = 1
@@ -151,7 +152,7 @@ OnFirstBoot_Pron
 //------------------------------------------------------------------------------
 OnBoot
 {
-	_txt = "\p[999]\s[-1]\p[998]\s[-1]\p[997]\s[-1]\1\s[-1]\w8\w8\w8\0(s_0)"
+	_txt = "\p[999]\s[-1]\p[998]\s[-1]\p[997]\s[-1]\1\s[-1]\w8\w8\w8\0(s_0)\![leave,passivemode]"
 	--
 	OnVariablesSet("boot")
 	--

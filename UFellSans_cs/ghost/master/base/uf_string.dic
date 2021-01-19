@@ -681,16 +681,7 @@ On_ghostrootbutton.caption { "Change Ghost" }
 On_callghostrootbutton.caption { "Call Ghost" }
 On_otherghostname
 {
-	ghostexlist = ""; _i = 0
-	while _i >= 0 {
-		_ghostname = EVAL(reference[_i])
-		if _ghostname != "" {
-			if _i > 0; ghostexlist += ","
-			ghostexlist += _ghostname[0]
-			_i++
-		}
-		else; _i = -1;
-	}
+	ghostexlist = reference
 	ghostexcount = ARRAYSIZE(ghostexlist)
 }
 On_shellrootbutton.caption { "Change look" }

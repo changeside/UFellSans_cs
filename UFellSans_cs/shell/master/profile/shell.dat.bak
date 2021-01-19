@@ -8,15 +8,15 @@ Char1.balloon.isleft,0
 Char299.balloon.isleft,1
 balloon0.offset,16.-17
 scriptbox.left,723
-Char0.centery,1080
+Char0.centery,970
 sliderinput.left,615
 Char298.centery,1080
 Char998.centery,1080
 Char999.balloon.isleft,1
 Char0.balloon.isleft,1
 Char298.balloon.isleft,1
-Char.VirtualDesktop,f21dceaa-a90c-4139-bbf4-bc94d0c30446
-Char0.center,1570
+Char.VirtualDesktop,e0c4a66b-2333-4521-ad86-c5b9aa7e965e
+Char0.center,1596
 scriptbox.top,501
 Char1.centery,840
 Char299.centery,1080
@@ -30,5 +30,5 @@ sliderinput.top,377
 Char299.center,1315
 Char998.center,1269
 Char999.center,1269
-Char298.center,1088
+Char298.center,1376
 __system_written_flag_do_not_remove__,written

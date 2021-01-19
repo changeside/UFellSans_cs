@@ -17,7 +17,7 @@ sstp.allowunspecifiedsend,0
 shiori,yaya.dll
 
 
-balloon,Underfell_cs
+balloon,underfell_cs
 balloon.dontmove,false
 
 

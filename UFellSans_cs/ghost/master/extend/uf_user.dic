@@ -461,7 +461,7 @@ OnEvent_Socks
 	//cancel
 	if reference0 == "nopick";
 		"(s_0)\i[116]\i[301]\i[298]%(m)(You wonder if you shouldn't at least pick them up yourself.)/
-			\n\n[half]%(m)(But as it is, they don't really annoy you right	now.)/
+			\n\n[half]%(m)(But as it is, they don't really annoy you right now.)/
 			\n\n%(m)(You can still get back to them later.)"
 	//closing warned
 	if _argv[0] == "close" && _argv[1] == "warning";

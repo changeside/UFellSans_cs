@@ -197,7 +197,7 @@ Capitalize
 {
   _buffer = SUBSTR(_argv[0],0,1)
   _argv[0] = ERASE(_argv[0],0,1)
-  _argv[0] = INSERT(_word,0,TOUPPER(_buffer))
+  _argv[0] = INSERT(_argv[0],0,TOUPPER(_buffer))
   _argv[0]
 }
 
