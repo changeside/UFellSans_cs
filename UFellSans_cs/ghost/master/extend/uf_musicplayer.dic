@@ -22,18 +22,19 @@ musicstateAr_Init
 	musicstateAr = ("","normal","off",100,100,0)
 }
 
-OnMusic_Player
+OnMusic_Player //TO DO add overview commands next to close button
 {
 		//check that array is initialized
 	if ISVAR("musicstateAr") == 0; musicstateAr_Init
 		//print var
 	_choose = "";	_skip = IARRAY; _buttonsAr = IARRAY; _shuffle = IARRAY; _cursong = ""
-		if songNb != -1; _cursong = (SPLITPATH(songAr[songNb]))[2]
+		if songNb != -1; _cursong = (SPLITPATH(songAr[songNb]))[2] //show current song if selected
 	
 	if _cursong != "" {
 		if musicstateAr[0] == "";			_buttonsAr = ("Play","")
 		elseif musicstateAr[0] == "play";	_buttonsAr = ("Stop","Pause")
 		elseif musicstateAr[0] == "pause";	_buttonsAr = ("Stop","Resume")
+
 		if musicstateAr[1] == "shuffle" {
 			_img = ("\_b[sprites/music_loop.png,inline]","\_b[sprites/music_loopNOT.png,inline]","\_b[sprites/music_shuffle.png,inline]")
 			if musicstateAr[5] == 0;		_shuffle ,= " \_a[OnMusic_Status,shuffleloop,menu]%(_img[1])\_a"
@@ -52,10 +53,14 @@ OnMusic_Player
 	else;
 		_choose = "\q[Select a song,OnMusic_List]"
 	
-	
+		//settings if they would work
 	//_settings = "\q[Bar: %(musicstateAr[2]),OnMusic_Option,bar]\_l[100]/
 	//	\q[Volume: %(musicstateAr[3]),OnMusic_Option,volume]\_l[205]/
 	//	\q[Speed: %(musicstateAr[4]),OnMusic_Option,speed]\n%(cmenu5)"
+		//temp restricted settings
+	_settings = "%(st)Bar: %(musicstateAr[2])%(stoff)\_l[100]/
+		\q[Volume: %(musicstateAr[3]),OnMusic_Option,volume]\_l[205]/
+		%(st)\_nSpeed: %(musicstateAr[4])\_n%(stoff)\n%(cmenu5)"
 	
 		//print
 	"\0\b2\_q\![set,choicetimeout,-1]/
@@ -73,30 +78,53 @@ OnMusic_Player
 		%(_skip[0])\_l[205]/
 		%(_skip[1])"
 }
+//check whether to show or hide the backwards/forwards skip button
+OnMusic_BACK
+{
+	_return = 1
+	case musicstateAr[1] {
+		when "normal", "single loop" {
+			if songNb == 0; _return = 0
+		} 
+		when "randomized"; _return = 0
+		when "shuffle" {
+			if ( musicstateAr[5] == 0 && songNb == temporderAr[0] ); _return = 0
+		}
+	}
+	if ARRAYSIZE(songAr) == 1; _return = 0
+	_return
+}
+OnMusic_FORWARD
+{
+	_return = 1
+	case musicstateAr[1] {
+		when "normal", "single loop" {
+			if songNb == ARRAYSIZE(songAr)-1; _return = 0
+		}
+		when "shuffle" {
+			if ( musicstateAr[5] == 0 && songNb == temporderAr[ARRAYSIZE(temporderAr)-1] ); _return = 0
+		}
+	}
+	if ARRAYSIZE(songAr) == 1; _return = 0
+	_return
+}
 
-/*	Sakuraskript
+//Sakuraskript playback functionality
 OnMusic_Play
 {
-	//_song = REPLACE(songAr[songNb],"\","/")
+	if reference0 == "new" {
+		"\![sound,stop]"
+		--
+		reference0 = "option"
+	}
+	if reference0 == "loop" {
+		"\![sound,loop,%(songAr[songNb])]"
+		return
+	}
+	--
 	"\![sound,%(reference0),%(songAr[songNb]),--window=%(musicstateAr[2]),--volume=%(musicstateAr[3]),--rate=%(musicstateAr[4])]"
 }
 OnSoundStop
-{
-	"\![raise,OnMusic_Skip]"
-}
-*/
-//	Mciaudior
-OnMusic_Play
-{
-	if reference0 != "stop" && reference0 != "loop"; reference0 = "play"
-	if reference1 == "new" {
-		_i = SAORI("plugin/mciaudior.dll","stop")
-		_x = SAORI("plugin/mciaudior.dll","load",songAr[songNb])
-		if musicstateAr[1] == "single loop"; _y = SAORI("plugin/mciaudior.dll","loop")
-	}
-	_i = SAORI("plugin/mciaudior.dll",reference0)
-}
-OnMAAPlayFinish
 {
 	"\![raise,OnMusic_Skip]"
 }
@@ -134,56 +162,29 @@ OnMusic_Skip
 		}
 	}
 
-	if musicstateAr[1] != "single loop"; "\![raise,OnMusic_Play,option,new]"
+	if musicstateAr[1] != "single loop"; "\![raise,OnMusic_Play,new]"
 	--
-	if reference1 == "menu"; OnMusic_Player
+	if reference1 == "menu"; "\![raise,OnMusic_Player]"
 }
 
-//check whether to show or hide the backwards/forwards skip button
-OnMusic_BACK
-{
-	_return = 1
-	case musicstateAr[1] {
-		when "normal", "single loop" {
-			if songNb == 0; _return = 0
-		} 
-		when "randomized"; _return = 0
-		when "shuffle" {
-			if ( musicstateAr[5] == 0 && songNb == temporderAr[0] ); _return = 0
-		}
-	}
-	if ARRAYSIZE(songAr) == 1; _return = 0
-	_return
-}
-OnMusic_FORWARD
-{
-	_return = 1
-	case musicstateAr[1] {
-		when "normal", "single loop" {
-			if songNb == ARRAYSIZE(songAr)-1; _return = 0
-		}
-		when "shuffle" {
-			if ( musicstateAr[5] == 0 && songNb == temporderAr[ARRAYSIZE(temporderAr)-1] ); _return = 0
-		}
-	}
-	if ARRAYSIZE(songAr) == 1; _return = 0
-	_return
-}
 
 OnMusic_Status
 {
 	if reference0 == "play" {		//play/stop
 		if musicstateAr[0] == ""; musicstateAr[0] = "play"
 		else; musicstateAr[0] = ""
-		"\![raise,OnMusic_Play,option]"
+		--
+		"\![raise,OnMusic_Play,play]"
 	}
 	elseif reference0 == "pause" {	//pause/resume
 		if musicstateAr[0] == "play" {
 			musicstateAr[0] = "pause"
+			--
 			"\![raise,OnMusic_Play,pause]"
 		}
 		else {
 			musicstateAr[0] = "play"
+			--
 			"\![raise,OnMusic_Play,resume]"
 		}
 	}
@@ -202,7 +203,7 @@ OnMusic_Status
 		else; musicstateAr[5] = 0
 	}
 	--
-	if reference1 == "menu"; OnMusic_Player
+	if reference1 == "menu"; "\![raise,OnMusic_Player]"
 }
 
 OnMusic_Mode
@@ -216,7 +217,7 @@ OnMusic_Mode
 		}
 		temporderAr = ARRSHUFFLE(temporderAr)
 	}
-	if reference0 == "menu"; OnMusic_Player
+	if reference1 == "menu"; "\![raise,OnMusic_Player]"
 }
 
 

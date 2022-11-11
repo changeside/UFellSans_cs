@@ -3,7 +3,7 @@ install,662079759
 homeurl_found,1
 surfacecount,135
 homeurl,https://raw.githubusercontent.com/changeside/UFellSans_cs/main/UFellSans_cs/
-update_result,OK(0)
+update_result,NG(timeout)
 firstboot,662079759
-commitmemorysize,2467155
-lastboot,664410451
+commitmemorysize,2474771
+lastboot,712493519

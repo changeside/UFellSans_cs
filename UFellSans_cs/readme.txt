@@ -1,6 +1,13 @@
---Readme--
+﻿--Readme--
 
-Greetings! This ghost of the Underfell version of Sans has options to toggle extremely harmful jokes, but the options are on by default, keep that in mind please.
+Greetings! This ghost of the Underfell version of Sans has options to toggle extremely harmful jokes, the options are off by default, keep that in mind please. The joke topics are as following and can be toggled separately:
+	sex
+	pedophile
+	children
+	baby
+	racism
+	cannibal
+	macabre
 Pay attention to how you treat him, he'll remember most of it, which will affect his current mood or basic actions towards you.
 
 --------------------------------------------------------------

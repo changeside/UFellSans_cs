@@ -111,7 +111,7 @@ OnBag_Array
 	
 	if INV('kofinote')[0]; _arr ,= "|Ko-Fi notice|kofi|OnKofi_Menu|Ko-Fi goals and details.|" //@uf_log.dic
 	_arr ,= "|Feedback|feedback|OnBug_Feedback|Feedback and bug report page.|"
-	_arr ,= "|Credit card|credits|OnCredits|All credits neatly listed.|" //@uf_log.dic
+	_arr ,= "|Credits list|credits|OnCredits|All credits neatly listed.|" //@uf_log.dic
 	if INV('costume')[0] {
 		if DRESS("Misc","Costume"); _arr ,= "|Costum-e|costume|OnBag_Choose|Take the costum-e back.|off"
 		else; _arr ,= "|Costum-e|costume|OnBag_Choose|Tape the costum-e on.|on"

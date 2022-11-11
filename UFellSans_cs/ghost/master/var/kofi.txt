@@ -1,5 +1,5 @@
 <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,600" rel="stylesheet" type="text/css">
-<link href="/Content/css?v=IQZlKyyDzOZJAuMYP2aB_rHdkMRsAEmCMb5V0WWbjQQ1" rel="stylesheet"/>
+<link href="/Content/css?v=h46vbPlK0ub6aRNtg8QNKYkdqt74pQf3-Wka8194fo81" rel="stylesheet"/>
 
 <style>
     .pn-flex {
@@ -33,7 +33,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>CounterWidget</title>
-</head>
+<script type="text/javascript">var appInsights=window.appInsights||function(config){function t(config){i[config]=function(){var t=arguments;i.queue.push(function(){i[config].apply(i,t)})}}var i={config:config},u=document,e=window,o="script",s="AuthenticatedUserContext",h="start",c="stop",l="Track",a=l+"Event",v=l+"Page",r,f;setTimeout(function(){var t=u.createElement(o);t.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(t)});try{i.cookie=u.cookie}catch(y){}for(i.queue=[],r=["Event","Exception","Metric","PageView","Trace","Dependency"];r.length;)t("track"+r.pop());return t("set"+s),t("clear"+s),t(h+a),t(c+a),t(h+v),t(c+v),t("flush"),config.disableExceptionTracking||(r="onerror",t("_"+r),f=e[r],e[r]=function(config,t,u,e,o){var s=f&&f(config,t,u,e,o);return s!==!0&&i["_"+r](config,t,u,e,o),s}),i}({instrumentationKey:"efbb8cb4-8fdb-4dcb-8b6e-0ca1fc6c9b01",sdkExtension:"a"});window.appInsights=appInsights;appInsights.queue&&appInsights.queue.length===0&&appInsights.trackPageView();</script></head>
 <body>
     <div style="cursor: pointer;" onclick="window.open('http://ko-fi.com/B0B1EAGS?ref=counter', '_blank');">
 <div class="simple-panel pn-flex text-center">
@@ -43,7 +43,7 @@
 <div class="kfds-lyt-center" style="padding: 16px;">
     <img src="https://storage.ko-fi.com/cdn/kofi_stroke_cup.svg" height="20" />
     <span class="kfds-left-mrgn-8">x</span>
-    <span class="koficounter-value kfds-font-size-small kfds-left-mrgn-8">146</span> 
+    <span class="koficounter-value kfds-font-size-small kfds-left-mrgn-8">204</span> 
     <span class="kfds-font-size-paragraph kfds-left-mrgn-8">Received</span>
 </div>
     <div class="pad10">
@@ -51,6 +51,7 @@
     </div>
 </div>
     </div>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"6e725cf57a859265","token":"9619e1070d3d4f9c95d9aa5acc908f1d","version":"2021.12.0","si":100}' crossorigin="anonymous"></script>
 </body>
 </html>
 <script>

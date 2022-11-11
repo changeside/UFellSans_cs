@@ -244,12 +244,12 @@ OnFileDrop2
 		}
 		when ".mid", ".wav", ".mp3", ".au", ".ogg", ".wma"
 		{
-			//_paths = RE_SPLIT(reference0,',(?=C:)')
-			//OnMusic_AddFolder(_paths)
+			_paths = RE_SPLIT(reference0,',(?=C:)')
+			OnMusic_AddFolder(_paths)
 		}
 		when ".m3u"//,".pls"
 		{
-			//OnMusic_Open("","",reference0)
+			OnMusic_Open("","",reference0)
 		}
 		others
 		{
@@ -375,8 +375,8 @@ OnTranslate
 	_talk = TextOnlyTranslator(_talk,'TextOnlyTranslatorFunc')
 	_talk = RE_REPLACEEX(_talk,'\(s_([^\)]*)\)','\\![embed,Ons_$1]')
 	_talk = EVAL('"' + REPLACE(_talk,'"','" + CHR(0x22) + "') + '"')
-	TOSTR(_talk)
 	//_talk = "\_?" + _talk //bugfix
+	TOSTR(_talk)
 }
 TextOnlyTranslator
 {
@@ -457,10 +457,17 @@ TextOnlyTranslator
 		if '\e' _in_ _tag[_i]; _end = !_end
 	}
 	
-		//pause insertion; only insert when not \_q
-	_temporary = RE_SPLIT(_tr,'\\_q'); _tr = ""
+	/*
+	this is example\_q t e x t---\_q to show, how it works.
+	*/
+
+		//pause insertion; only insert when not \_q or \![]
+	_temporary = RE_SPLIT(_tr,'\\(q\[.*?\]\[.*?\]|[!&8cfijmpqsn]\[.*?\]|[-*+014567bcehntuvxz]|_[ablmsuvw]\[.*?\]|__(t|[qw]\[.*?\])|_[!?+nqsV])'); _tr = ""
+	_tag = RE_GETSTR()
+	_qs = 0
 	for _i = 0; _i < ARRAYSIZE(_temporary); _i++ {
-		if (_i%2) == 0 {
+		if _tag[_i] == "\_q"; _qs = ! _qs
+		if !_qs && "\![" _in_ _tag[_i] {
 			_temporary[_i] = RE_REPLACE(_temporary[_i] , '(?<!(\\w[0-9]))\\n\\n(?!\[)', '\w9\w3\n\n')
 			_temporary[_i] = RE_REPLACE(_temporary[_i] , '(?<!(\\w[0-9]))\\n\\n\[half\]' , '\w9\w3\n\n[half]')
 			_temporary[_i] = RE_REPLACE(_temporary[_i] , '\.\.\.(?=\s|\\n)', '...\w9')
@@ -471,7 +478,7 @@ TextOnlyTranslator
 			_temporary[_i] = RE_REPLACE(_temporary[_i] ,'(?<!\\)!(?=[^!]|\\n)', '!\w9')
 		}
 		_tr += _temporary[_i]
-		if ARRAYSIZE(_temporary) > 1; _tr += "\_q"
+		if ARRAYSIZE(_temporary) > 1; _tr += _tag[_i]
 	}
 		//Replace a talking mouths after \i[298] with non-talking
 	//_tr = RE_REPLACEEX(_tr,'(?<=\\i\[298\])(.*?\i\[2\d\d)\]','$10]')

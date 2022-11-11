@@ -112,7 +112,7 @@ OnMenu_Render
 	/
 	%(cmenu3)/
 	\n\n[half]\_l[-10]\![*]\q[Games,OnGame]/
-	\_l[80]\![*]%(st)Music Player%(stoff)\n\n[half]%(def)/
+	\_l[80]\![*]\q[Music Player,OnMusic_Player]\n\n[half]%(def)/
 	%(cmenu4)\_l[-10]\![*]\q[Shop,OnShop]/
 	\_l[80]\![*]\q[Bag,OnBag]%(def)/
 	%(cmenu5)%(_poll)/
@@ -126,6 +126,8 @@ OnMenu_Render
 	%(buttons(2,'Nevermind','OnCancel'))"
 		//music player line for once it gets fixed
 	//\_l[80]\![*]\q[Music Player,OnMusic_Player]\n\n[half]%(def)/
+		//music player broken
+	//\_l[80]\![*]%(st)Music Player%(stoff)\n\n[half]%(def)/
 }
 
 OnCancel

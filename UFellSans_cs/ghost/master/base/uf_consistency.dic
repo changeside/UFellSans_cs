@@ -467,7 +467,7 @@ nickname //_argv[0] = ""/"special"; if special; only pulls special nicknames
 	if AFF(30) && _argv[0]!='special'; "human"
 	
 	if AFF(0,15) && ARRINFO("user","artist"); "paint disaster"
-	if AFF(0,15) && _argv[0]!='special'; "retard"
+	if AFF(0,15) && _argv[0]!='special'; "miserable wretch"
 	if AFF(0,15) && _argv[0]!='special'; "idiot"
 	if AFF(0,15) && _argv[0]!='special'; "dumbass"
 	if AFF(0,15) && _argv[0]!='special'; "asshole"
@@ -478,7 +478,7 @@ nickname //_argv[0] = ""/"special"; if special; only pulls special nicknames
 	if AFF(0,15) && _argv[0]!='special'; "bitch"
 	if AFF(0,15) && _argv[0]!='special'; "brat"
 	if AFF(0,15) && _argv[0]!='special'; "little shit"
-	if AFF(0,15) && _argv[0]!='special'; "fucktard"
+	if AFF(0,15) && _argv[0]!='special'; "fucker"
 	
 }
 myfriend : nonoverlap
